@@ -4847,6 +4847,8 @@ void TParseContext::reservedPpErrorCheck(const TSourceLoc& loc, const char* iden
 //
 bool TParseContext::lineContinuationCheck(const TSourceLoc& loc, bool endOfComment)
 {
+    return true;
+
     const char* message = "line continuation";
 
     bool lineContinuationAllowed = (isEsProfile() && version >= 300) ||

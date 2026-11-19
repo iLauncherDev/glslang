@@ -165,8 +165,8 @@ int TPpContext::CPPdefine(TPpToken* ppToken)
             mac.body.putToken(token, ppToken);
         } else if (pendingPoundSymbols == 1) {
             // A single #: stringify
-            parseContext.requireProfile(ppToken->loc, ~EEsProfile, "stringify (#)");
-            parseContext.profileRequires(ppToken->loc, ~EEsProfile, 130, nullptr, "stringify (#)");
+            //parseContext.requireProfile(ppToken->loc, ~EEsProfile, "stringify (#)");
+            //parseContext.profileRequires(ppToken->loc, ~EEsProfile, 130, nullptr, "stringify (#)");
             bool isArg = false;
             if (token == PpAtomIdentifier) {
                 for (int i = (int)mac.args.size() - 1; i >= 0; i--) {
@@ -186,8 +186,8 @@ int TPpContext::CPPdefine(TPpToken* ppToken)
             pendingPoundSymbols = 0;
         } else if (pendingPoundSymbols % 2 == 0) {
             // Any number of pastes '##' in a row: idempotent, just becomes one paste
-            parseContext.requireProfile(ppToken->loc, ~EEsProfile, "token pasting (##)");
-            parseContext.profileRequires(ppToken->loc, ~EEsProfile, 130, nullptr, "token pasting (##)");
+            //parseContext.requireProfile(ppToken->loc, ~EEsProfile, "token pasting (##)");
+            //parseContext.profileRequires(ppToken->loc, ~EEsProfile, 130, nullptr, "token pasting (##)");
             for (int i = 0; i < pendingPoundSymbols / 2; i++) {
                 mac.body.putToken(PpAtomPaste, &savePound);
             }
